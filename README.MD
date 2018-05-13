@@ -2,7 +2,9 @@
 
 例如：
 
-### /UserServlet/register
+### register
+
+URL : /UserServlet/register
 
 请求参数：
 
@@ -58,8 +60,10 @@ api.ajax({
 # 目录
 
 - [User](#user)
--- [/UserServlet/register](#/userservlet/register)
+-- [/UserServlet/register](#register)
 
 ## User
 
-### /UserServlet/register
+### register
+
+URL : /UserServlet/register
