@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/UserServlet/register", model.UserRegister)
 	http.HandleFunc("/UserServlet/login", model.UserLogin)
 
 	http.HandleFunc("/MomentServlet/upload", model.MomentUpload)
