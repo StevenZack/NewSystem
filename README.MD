@@ -57,8 +57,8 @@ api.ajax({
 
 # 目录
 
-- [User](user)
--- [/UserServlet/register](/UserServlet/register)
+- [User](#user)
+-- [/UserServlet/register](#/UserServlet/register)
 
 ## User
 
