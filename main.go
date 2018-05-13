@@ -27,7 +27,8 @@ func main() {
 	http.HandleFunc("/OrderServlet/addOrder", model.OrderAdd)
 	http.HandleFunc("/OrderServlet/payOrder", model.OrderPay)
 
-	http.HandleFunc("/adressServlet/findaddressByOpenId", model.UserGetAddresses)
+	http.HandleFunc("/AddressServlet/findAll", model.UserGetAddresses)
+	http.HandleFunc("/AddressServlet/addAddress", model.UserAddAddress)
 
 	e := http.ListenAndServe(":8080", nil)
 	if e != nil {
