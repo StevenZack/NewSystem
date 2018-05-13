@@ -60,7 +60,7 @@ api.ajax({
 # 目录
 
 - [User](#user)
--- [/UserServlet/register](#register)
+	- [/UserServlet/register](#register-1)
 
 ## User
 
