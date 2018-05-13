@@ -154,7 +154,7 @@ URL : /AddressServlet/addAddress
 
 ### findAll
 
-URL : /AdressServlet/findaddressByOpenId
+URL : /AdressServlet/findAll
 
 请求参数
 
