@@ -11,10 +11,10 @@ type Product struct {
 	Type        string   `json:"type"`
 	Name        string   `json:"name"`
 	EnglishName string   `json:"englishName"`
+	Names       string
 }
 
 func ProFindByName(w http.ResponseWriter, r *http.Request) {
-
 }
 func ProFindByEN(w http.ResponseWriter, r *http.Request) {
 

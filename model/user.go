@@ -17,7 +17,6 @@ type User struct {
 
 func UserLogin(w http.ResponseWriter, r *http.Request) {
 	handleCon(w)
-	r.ParseMultipartForm(20 << 10)
 	openId := r.FormValue("openId")
 	s, e := mgo.Dial(mongoDB)
 	if e != nil {
@@ -53,7 +52,6 @@ func UserLogin(w http.ResponseWriter, r *http.Request) {
 }
 func UserAddAddress(w http.ResponseWriter, r *http.Request) {
 	handleCon(w)
-	r.ParseMultipartForm(10 << 10)
 	openid := r.FormValue("openId")
 	addr := r.FormValue("address")
 	gu := User{}
@@ -79,7 +77,6 @@ func UserAddAddress(w http.ResponseWriter, r *http.Request) {
 }
 func UserGetAddresses(w http.ResponseWriter, r *http.Request) {
 	handleCon(w)
-	r.ParseMultipartForm(10 << 10)
 	openid := r.FormValue("openId")
 	gu := User{}
 	s, e := mgo.Dial(mongoDB)

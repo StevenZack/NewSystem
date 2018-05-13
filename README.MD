@@ -25,7 +25,7 @@ URL : /UserServlet/login
 
 ``` javascript
 api.ajax({
-        url: host+'/UserServlet/register',
+        url: host+'/UserServlet/login',
         method: 'post',
         data: {
             values: {
