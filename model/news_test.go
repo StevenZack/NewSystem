@@ -8,7 +8,6 @@ import (
 )
 
 func Test_NewsAdd(t *testing.T) {
-	t.Log(addNews())
 }
 func addNews(title, content, publisher, typ string, images []string) string {
 	n := News{Title: title, Content: content, Publisher_title: publisher, Type: typ, Images: images}

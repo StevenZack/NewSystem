@@ -22,6 +22,8 @@ func main() {
 	http.HandleFunc("/SearchServlet/findproductBytype", model.ProFindByType)
 	http.HandleFunc("/SearchServlet/fuzzy", model.ProFuzzyFind)
 
+	http.HandleFunc("/ProServlet/add", model.ProAdd)
+
 	http.HandleFunc("/OrderServlet/findorderByopenid", model.OrderGetAll)
 	http.HandleFunc("/OrderServlet/findOrdersByStatus", model.OrderGetAll)
 	http.HandleFunc("/OrderServlet/addOrder", model.OrderAdd)

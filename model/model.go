@@ -10,6 +10,7 @@ import (
 	"mime/multipart"
 	"net/http"
 	"os"
+	"regexp"
 	"strconv"
 	"time"
 )
@@ -129,4 +130,37 @@ func readAll(r io.Reader) string {
 		return ""
 	}
 	return string(b)
+}
+func splitHans(s string) string {
+	rs := []rune(s)
+	result := ""
+	for k, v := range rs {
+		str := string(v)
+		if isChines(str) {
+			result += str + " "
+			continue
+		}
+		if !isEnglish(v) {
+			result += str
+		}
+		left, right := "", ""
+		if k != 0 && isChines(string(rs[k-1])) {
+			left = " "
+		}
+		if k != len(rs)-1 && isChines(string(rs[k+1])) {
+			right = " "
+		}
+		result += left + str + right
+	}
+	return result
+}
+func isChines(s string) bool {
+	var hzRegexp = regexp.MustCompile("^[\u4e00-\u9fa5]$")
+	return hzRegexp.MatchString(s)
+}
+func isEnglish(r rune) bool {
+	if r >= 65 && r <= 90 || r >= 97 && r <= 122 {
+		return true
+	}
+	return false
 }
