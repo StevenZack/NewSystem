@@ -22,6 +22,7 @@ type Base struct {
 var (
 	pubDir   string = "pub/"
 	mongoDB  string = "127.0.0.1"
+	host     string = "http://101.200.54.63:8080/"
 	db       string = "NewSystem"
 	cuser    string = "user"
 	corder   string = "order"
@@ -103,4 +104,29 @@ func Post(url string, m map[string]interface{}) (string, error) {
 	defer rp.Body.Close()
 	b, e := ioutil.ReadAll(rp.Body)
 	return string(b), e
+}
+func getTimeNow() string {
+	return time.Now().Format("2006-01-01 15:03:02")
+}
+func handleV(r *http.Request, key string) string {
+	vs := r.MultipartForm.File[key]
+	if len(vs) > 0 {
+		fi, e := vs[0].Open()
+		if e != nil {
+			fmt.Println(e)
+			return ""
+		}
+		str := readAll(fi)
+		fmt.Println(str)
+		fi.Close()
+		return str
+	}
+	return ""
+}
+func readAll(r io.Reader) string {
+	b, e := ioutil.ReadAll(r)
+	if e != nil {
+		return ""
+	}
+	return string(b)
 }

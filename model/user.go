@@ -68,7 +68,7 @@ func UserAddAddress(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	gu.Addresses = append(gu.Addresses, addr)
-	e = c.Insert(gu)
+	e = c.Update(bson.M{"openid": openid}, gu)
 	if e != nil {
 		returnErr(w, e)
 		return

@@ -15,6 +15,7 @@ func main() {
 	http.HandleFunc("/NewsServlet/findAllByKind", model.NewsFindByType)
 	http.HandleFunc("/NewsServlet/findAll", model.NewsFindAll)
 	http.HandleFunc("/NewsServlet/findPhotoBrowserByNewsId", model.NewsGetDetail)
+	http.HandleFunc("/NewsServlet/add", model.NewsAdd)
 
 	http.HandleFunc("/SearchServlet/findproductByname", model.ProFindByName)
 	http.HandleFunc("/SearchServlet/findproductByname_English", model.ProFindByEN)

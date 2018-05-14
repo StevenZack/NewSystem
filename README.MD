@@ -38,7 +38,7 @@ api.ajax({
         if (ret&&ret.status!='ERR') {
         	//登录成功
         } else {
-            alert( ret?ret.statusInfo:err.msg );
+            alert( ret?('Server err:'+ret.statusInfo):err.msg );
         }
     });
 ```
