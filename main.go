@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gitee.com/stevenzack/NewSystem/model"
+	"github.com/StevenZack/NewSystem/model"
 	"net/http"
 )
 

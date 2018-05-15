@@ -32,7 +32,7 @@ func ProFindByName(w http.ResponseWriter, r *http.Request) {
 	cp := s.DB(db).C(cproduct)
 	var backData struct {
 		Base
-		Products []Product
+		Products []Product `json:"products"`
 	}
 	e = cp.Find(bson.M{"$text": bson.M{"$search": splitHans(query)}}).All(&backData.Products)
 	if e != nil {
@@ -54,7 +54,7 @@ func ProFindByEN(w http.ResponseWriter, r *http.Request) {
 	cp := s.DB(db).C(cproduct)
 	var backData struct {
 		Base
-		Products []Product
+		Products []Product `json:"products"`
 	}
 	e = cp.Find(bson.M{"$text": bson.M{"$search": splitHans(query)}}).All(&backData.Products)
 	if e != nil {
@@ -77,7 +77,7 @@ func ProFindByType(w http.ResponseWriter, r *http.Request) {
 	cp := s.DB(db).C(cproduct)
 	var backData struct {
 		Base
-		Products []Product
+		Products []Product `json:"products"`
 	}
 	e = cp.Find(bson.M{"$text": bson.M{"$search": splitHans(query)}, "type": typ}).All(&backData.Products)
 	if e != nil {
@@ -99,7 +99,7 @@ func ProFuzzyFind(w http.ResponseWriter, r *http.Request) {
 	cp := s.DB(db).C(cproduct)
 	var backData struct {
 		Base
-		Products []Product
+		Products []Product `json:"products"`
 	}
 	e = cp.Find(bson.M{"$text": bson.M{"$search": splitHans(query)}}).All(&backData.Products)
 	if e != nil {
