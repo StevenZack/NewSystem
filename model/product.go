@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/json"
+	"github.com/StevenZack/tools"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"io/ioutil"
@@ -34,7 +35,7 @@ func ProFindByName(w http.ResponseWriter, r *http.Request) {
 		Base
 		Products []Product `json:"products"`
 	}
-	e = cp.Find(bson.M{"$text": bson.M{"$search": splitHans(query)}}).All(&backData.Products)
+	e = cp.Find(bson.M{"$text": bson.M{"$search": tools.SplitHans(query)}}).All(&backData.Products)
 	if e != nil {
 		returnErr(w, e)
 		return
@@ -56,7 +57,7 @@ func ProFindByEN(w http.ResponseWriter, r *http.Request) {
 		Base
 		Products []Product `json:"products"`
 	}
-	e = cp.Find(bson.M{"$text": bson.M{"$search": splitHans(query)}}).All(&backData.Products)
+	e = cp.Find(bson.M{"$text": bson.M{"$search": tools.SplitHans(query)}}).All(&backData.Products)
 	if e != nil {
 		returnErr(w, e)
 		return
@@ -79,7 +80,7 @@ func ProFindByType(w http.ResponseWriter, r *http.Request) {
 		Base
 		Products []Product `json:"products"`
 	}
-	e = cp.Find(bson.M{"$text": bson.M{"$search": splitHans(query)}, "type": typ}).All(&backData.Products)
+	e = cp.Find(bson.M{"$text": bson.M{"$search": tools.SplitHans(query)}, "type": typ}).All(&backData.Products)
 	if e != nil {
 		returnErr(w, e)
 		return
@@ -101,7 +102,7 @@ func ProFuzzyFind(w http.ResponseWriter, r *http.Request) {
 		Base
 		Products []Product `json:"products"`
 	}
-	e = cp.Find(bson.M{"$text": bson.M{"$search": splitHans(query)}}).All(&backData.Products)
+	e = cp.Find(bson.M{"$text": bson.M{"$search": tools.SplitHans(query)}}).All(&backData.Products)
 	if e != nil {
 		returnErr(w, e)
 		return
@@ -122,8 +123,8 @@ func ProAdd(w http.ResponseWriter, r *http.Request) {
 		returnErr(w, e)
 		return
 	}
-	pro.ProductId = newToken()
-	pro.Names = splitHans(pro.Name) + " " + splitHans(pro.EnglishName)
+	pro.ProductId = tools.NewToken()
+	pro.Names = tools.SplitHans(pro.Name) + " " + tools.SplitHans(pro.EnglishName)
 	s, e := mgo.Dial(mongoDB)
 	if e != nil {
 		returnErr(w, e)

@@ -9,10 +9,10 @@ import (
 
 type User struct {
 	Base
-	OpenId    string   `json:"openId"`
-	Addresses []string `json:"addresses"`
-	Nickname  string   `json:"nickName"`
-	Avatar    string   `json:"avatar"`
+	OpenId    string    `json:"openId"`
+	Addresses []Address `json:"addresses"`
+	Nickname  string    `json:"nickName"`
+	Avatar    string    `json:"avatar"`
 }
 
 func UserLogin(w http.ResponseWriter, r *http.Request) {
@@ -53,6 +53,8 @@ func UserLogin(w http.ResponseWriter, r *http.Request) {
 func UserAddAddress(w http.ResponseWriter, r *http.Request) {
 	handleCon(w)
 	openid := r.FormValue("openId")
+	name := r.FormValue("name")
+	phone := r.FormValue("phone")
 	addr := r.FormValue("address")
 	gu := User{}
 	s, e := mgo.Dial(mongoDB)
@@ -67,7 +69,7 @@ func UserAddAddress(w http.ResponseWriter, r *http.Request) {
 		returnErr(w, e)
 		return
 	}
-	gu.Addresses = append(gu.Addresses, addr)
+	gu.Addresses = append(gu.Addresses, Address{Address: addr, Name: name, Phone: phone})
 	e = c.Update(bson.M{"openid": openid}, gu)
 	if e != nil {
 		returnErr(w, e)

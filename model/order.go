@@ -1,6 +1,7 @@
 package model
 
 import (
+	"github.com/StevenZack/tools"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"net/http"
@@ -100,8 +101,8 @@ func OrderAdd(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	order.OrderStatus = "未付款"
-	order.OrderId = newToken()
-	order.CreateTime = getTimeNow()
+	order.OrderId = tools.NewToken()
+	order.CreateTime = tools.GetTimeStrNow()
 	order.Price = order.Num * produc.Price
 	e = co.Insert(order)
 	if e != nil {

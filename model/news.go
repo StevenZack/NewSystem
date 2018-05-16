@@ -2,6 +2,7 @@ package model
 
 import (
 	"encoding/json"
+	"github.com/StevenZack/tools"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"io/ioutil"
@@ -93,8 +94,8 @@ func NewsAdd(w http.ResponseWriter, r *http.Request) {
 		returnErr(w, e)
 		return
 	}
-	n.News_id = newToken()
-	n.CreateTime = getTimeNow()
+	n.News_id = tools.NewToken()
+	n.CreateTime = tools.GetTimeStrNow()
 	s, e := mgo.Dial(mongoDB)
 	if e != nil {
 		returnErr(w, e)

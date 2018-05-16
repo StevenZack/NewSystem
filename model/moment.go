@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	"github.com/StevenZack/tools"
 	"io"
 	"net/http"
 	"os"
@@ -52,7 +53,7 @@ func MomentUpload(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprint(w, e)
 			return
 		}
-		rpath := pubDir + "images/" + newToken() + getFormatFromFileName(v.Filename)
+		rpath := pubDir + "images/" + tools.NewToken() + getFormatFromFileName(v.Filename)
 		fo, e := os.OpenFile(rpath, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
 		if e != nil {
 			fmt.Fprint(w, e)
@@ -63,7 +64,7 @@ func MomentUpload(w http.ResponseWriter, r *http.Request) {
 		images = append(images, host+rpath)
 		fo.Close()
 	}
-	e = cm.Insert(Moment{Text: text, Address: address, Images: images, OpenId: openId, CreateTime: getTimeNow()})
+	e = cm.Insert(Moment{Text: text, Address: address, Images: images, OpenId: openId, CreateTime: tools.GetTimeStrNow()})
 	if e != nil {
 		returnErr(w, e)
 		return
