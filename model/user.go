@@ -113,7 +113,7 @@ func UserRemoveAddress(w http.ResponseWriter, r *http.Request) {
 	}
 	defer s.Close()
 	c := s.DB(db).C(cuser)
-	e = c.Find(bson.M{"openid", openid}).One(&gu)
+	e = c.Find(bson.M{"openid": openid}).One(&gu)
 	if e != nil {
 		returnErr(w, e)
 		return
@@ -122,7 +122,7 @@ func UserRemoveAddress(w http.ResponseWriter, r *http.Request) {
 		returnErr(w, "Index invalid")
 		return
 	}
-	gu.Addresses = append(gu.Addresses[:i], gu.Addresses[i+1:])
+	gu.Addresses = append(gu.Addresses[:i], gu.Addresses[i+1:]...)
 	e = c.Update(bson.M{"openid": openid}, gu)
 	if e != nil {
 		returnErr(w, e)
