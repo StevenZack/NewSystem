@@ -2,6 +2,7 @@ package model
 
 import (
 	"net/http"
+	"strconv"
 
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
@@ -94,4 +95,38 @@ func UserGetAddresses(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	returnData(w, gu)
+}
+func UserRemoveAddress(w http.ResponseWriter, r *http.Request) {
+	handleCon(w)
+	openid := r.FormValue("openId")
+	index := r.FormValue("index")
+	i, e := strconv.Atoi(index)
+	if e != nil {
+		returnErr(w, e)
+		return
+	}
+	gu := User{}
+	s, e := mgo.Dial(mongoDB)
+	if e != nil {
+		returnErr(w, e)
+		return
+	}
+	defer s.Close()
+	c := s.DB(db).C(cuser)
+	e = c.Find(bson.M{"openid", openid}).One(&gu)
+	if e != nil {
+		returnErr(w, e)
+		return
+	}
+	if i >= len(gu.Addresses) || i < 0 {
+		returnErr(w, "Index invalid")
+		return
+	}
+	gu.Addresses = append(gu.Addresses[:i], gu.Addresses[i+1:])
+	e = c.Update(bson.M{"openid": openid}, gu)
+	if e != nil {
+		returnErr(w, e)
+		return
+	}
+	returnData(w, Base{Status: "OK"})
 }

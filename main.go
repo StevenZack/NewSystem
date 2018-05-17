@@ -31,6 +31,7 @@ func main() {
 
 	http.HandleFunc("/AddressServlet/findAll", model.UserGetAddresses)
 	http.HandleFunc("/AddressServlet/addAddress", model.UserAddAddress)
+	http.HandleFunc("/AddressServlet/remove", model.UserRemoveAddress)
 
 	e := http.ListenAndServe(":8080", nil)
 	if e != nil {
