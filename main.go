@@ -33,6 +33,8 @@ func main() {
 	http.HandleFunc("/AddressServlet/addAddress", model.UserAddAddress)
 	http.HandleFunc("/AddressServlet/remove", model.UserRemoveAddress)
 
+	http.Handle("/pub/", http.StripPrefix("/pub/", http.FileServer(http.Dir("./pub"))))
+
 	e := http.ListenAndServe(":8080", nil)
 	if e != nil {
 		fmt.Println(e)
