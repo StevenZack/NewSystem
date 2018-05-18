@@ -69,6 +69,10 @@ func MomentUpload(w http.ResponseWriter, r *http.Request) {
 		}
 		os.MkdirAll(pubDir+"images/", 0755)
 		rpath := pubDir + "images/" + tools.NewToken() + getFormatFromFileName(v.Filename)
+		_, e = os.Stat(rpath)
+		if e == nil {
+			rpath = pubDir + "images/" + tools.NewNumToken() + getFormatFromFileName(v.Filename)
+		}
 		fo, e := os.OpenFile(rpath, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
 		if e != nil {
 			fmt.Fprint(w, e)
