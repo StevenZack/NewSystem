@@ -26,6 +26,20 @@ func MomentUpload(w http.ResponseWriter, r *http.Request) {
 	// text := r.FormValue("text")
 	// address := r.FormValue("address")
 	openId := handleV(r, "openId")
+	if openId == "" {
+		if r.MultipartForm.Value != nil {
+			fmt.Println("multi != nil")
+			if v, ok := r.MultipartForm.Value["openId"]; ok {
+				if len(v) > 0 {
+					fmt.Println("len(v) > 0")
+					openId = v[0]
+				}
+			}
+		} else {
+			fmt.Println("r.FormValue")
+			openId = r.FormValue("openId")
+		}
+	}
 	s, e := mgo.Dial(mongoDB)
 	if e != nil {
 		returnErr(w, e)
@@ -53,6 +67,7 @@ func MomentUpload(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprint(w, e)
 			return
 		}
+		os.MkdirAll(pubDir+"images/", 0755)
 		rpath := pubDir + "images/" + tools.NewToken() + getFormatFromFileName(v.Filename)
 		fo, e := os.OpenFile(rpath, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
 		if e != nil {
