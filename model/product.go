@@ -67,7 +67,6 @@ func ProFindByEN(w http.ResponseWriter, r *http.Request) {
 }
 func ProFindByType(w http.ResponseWriter, r *http.Request) {
 	handleCon(w)
-	query := r.FormValue("query")
 	typ := r.FormValue("type")
 	s, e := mgo.Dial(mongoDB)
 	if e != nil {
@@ -80,7 +79,7 @@ func ProFindByType(w http.ResponseWriter, r *http.Request) {
 		Base
 		Products []Product `json:"products"`
 	}
-	e = cp.Find(bson.M{"$text": bson.M{"$search": tools.SplitHans(query)}, "type": typ}).All(&backData.Products)
+	e = cp.Find(bson.M{"type": typ}).All(&backData.Products)
 	if e != nil {
 		returnErr(w, e)
 		return
