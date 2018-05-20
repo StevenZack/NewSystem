@@ -141,3 +141,27 @@ func OrderPay(w http.ResponseWriter, r *http.Request) {
 	}
 	returnData(w, Base{Status: "OK"})
 }
+func OrderReceived(w http.ResponseWriter, r *http.Request) {
+	handleCon(w)
+	orderId := r.FormValue("orderId")
+	s, e := mgo.Dial(mongoDB)
+	if e != nil {
+		returnErr(w, e)
+		return
+	}
+	defer s.Close()
+	co := s.DB(db).C(corder)
+	order := Order{}
+	e = co.Find(bson.M{"orderid": orderId}).One(&order)
+	if e != nil {
+		returnErr(w, e)
+		return
+	}
+	order.OrderStatus = "已完成"
+	e = co.Update(bson.M{"orderid": orderId}, order)
+	if e != nil {
+		returnErr(w, e)
+		return
+	}
+	returnData(w, Base{Status: "OK"})
+}

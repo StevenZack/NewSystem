@@ -28,6 +28,7 @@ func main() {
 	http.HandleFunc("/OrderServlet/findOrdersByStatus", model.OrderGetAll)
 	http.HandleFunc("/OrderServlet/addOrder", model.OrderAdd)
 	http.HandleFunc("/OrderServlet/payOrder", model.OrderPay)
+	http.HandleFunc("/OrderServlet/receivedOrder", model.OrderReceived)
 
 	http.HandleFunc("/AddressServlet/findAll", model.UserGetAddresses)
 	http.HandleFunc("/AddressServlet/addAddress", model.UserAddAddress)
