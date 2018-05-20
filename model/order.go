@@ -17,6 +17,7 @@ type Order struct {
 	Num         int    `json:"num"`
 	Price       int    `json:"price"`
 	BuyerId     string `json:"buyerId"`
+	ProductName string `json:"productName"`
 }
 
 func OrderGetAll(w http.ResponseWriter, r *http.Request) {
@@ -103,6 +104,7 @@ func OrderAdd(w http.ResponseWriter, r *http.Request) {
 	order.OrderStatus = "未付款"
 	order.OrderId = tools.NewToken()
 	order.CreateTime = tools.GetTimeStrNow()
+	order.ProductName = produc.Name
 	order.Price = order.Num * produc.Price
 	e = co.Insert(order)
 	if e != nil {
