@@ -133,7 +133,7 @@ func OrderPay(w http.ResponseWriter, r *http.Request) {
 		returnErr(w, e)
 		return
 	}
-	order.OrderStatus = "待发货"
+	order.OrderStatus = "待收货"
 	e = co.Update(bson.M{"orderid": orderId}, order)
 	if e != nil {
 		returnErr(w, e)
