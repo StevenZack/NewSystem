@@ -35,7 +35,11 @@ func OrderGetAll(w http.ResponseWriter, r *http.Request) {
 		Base
 		Orders []Order `json:"orders"`
 	}
-	e = co.Find(bson.M{"buyerid": openId, "orderStatus": orderStatus}).All(&backData.Orders)
+	if orderStatus == "" {
+		e = co.Find(bson.M{"buyerid": openId}).All(&backData.Orders)
+	} else {
+		e = co.Find(bson.M{"buyerid": openId, "orderStatus": orderStatus}).All(&backData.Orders)
+	}
 	if e != nil {
 		returnErr(w, e)
 		return
