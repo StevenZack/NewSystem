@@ -11,16 +11,13 @@ import (
 )
 
 func Test_ProAdd(t *testing.T) {
-	ret := addPro("玻尿酸密集补水面膜 修护保湿滋润", "Home Facial Pro", "面膜", 99, "https://g-search1.alicdn.com/img/bao/uploaded/i4/imgextra/i2/117606064/TB2Awi4gGSWBuNjSsrbXXa0mVXa_!!0-saturn_solar.jpg_180x180.jpg_.webp")
-	ret = addPro("云南白药采之汲自然原酵系列天然面膜深度补水保湿", "", "面膜", 59,
-		"https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/2077111000/TB2sHU.rGSWBuNjSsrbXXa0mVXa_!!2077111000-0-item_pic.jpg_180x180.jpg_.webp")
-	ret = addPro("珀莱雅人鱼公主玻尿酸面膜贴女海藻补水保湿提亮清", "", "面膜", 99,
-		"https://g-search3.alicdn.com/img/bao/uploaded/i4/i4/379424083/TB2qGQ4rhWYBuNjy1zkXXXGGpXa_!!379424083-0-item_pic.jpg_180x180.jpg_.webp")
-	ret = addPro("[送13片]杰威尔男士面膜美白补水保湿控油祛痘去黑", "", "面膜", 69,
-		"https://g-search3.alicdn.com/img/bao/uploaded/i4/i1/756239978/TB1VMMur_lYBeNjSszcXXbwhFXa_!!0-item_pic.jpg_180x180.jpg_.webp")
+	ret := addPro("https://img.alicdn.com/imgextra/i3/TB1dTSafL6H8KJjy0Fjw8mXepXa_013809.jpg_430x430q90.jpg", "夏季减肥修正 左旋肉碱茶多酚片 0.8g/片*60片男女减肥", "保健品", 68)
+	ret = addPro("https://img.alicdn.com/imgextra/i2/TB1.UKKNpXXXXcnXFXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg", "CENTRUM/善存R佳维片 1.33g/片*150片+133.g/片*60片复合维生素", "保健品", 189)
+	ret = addPro("https://img.alicdn.com/imgextra/i4/2549841410/TB2pdGsr1uSBuNjSsplXXbe8pXa_!!2549841410-0-sm.jpg_430x430q90.jpg", "【直营】swisse女士复合维生素片120片 女士保健品", "保健品", 249)
+	ret = addPro("https://img.alicdn.com/imgextra/i7/TB1VAoVPVXXXXcjXFXXy74f.VXX_110843.jpg_430x430q90.jpg", "脑白金口服液10天剂量礼盒装改善深睡眠更年期保健品送礼", "保健品", 128)
 	t.Log(ret)
 }
-func addPro(name, englishName, typ string, price int, is interface{}) string {
+func addPro(is interface{}, name, typ string, price int) string {
 	var images []string
 	if v, ok := is.(string); ok {
 		images = append(images, v)
@@ -28,11 +25,10 @@ func addPro(name, englishName, typ string, price int, is interface{}) string {
 		images = v
 	}
 	b, e := json.Marshal(Product{
-		Name:        name,
-		EnglishName: englishName,
-		Type:        typ,
-		Images:      images,
-		Price:       price,
+		Name:   name,
+		Type:   typ,
+		Images: images,
+		Price:  price,
 	})
 	if e != nil {
 		return e.Error()

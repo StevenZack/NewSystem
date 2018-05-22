@@ -1,0 +1,25 @@
+
+	ret := addPro("ONLY夏季新款潮流纯棉卡通印花T恤女", "", "服装", 99, "http://img.alicdn.com/imgextra/i4/356060330/TB2q5Rfi4HI8KJjy1zbXXaxdpXa_!!356060330.jpg_430x430q90.jpg")
+	ret = addPro("马克华菲短袖t恤男士Polo衫男装翻领2018夏季新款潮流白色半袖男T", "", "服装", 148, "https://img.alicdn.com/imgextra/i1/1120470337/TB2.Fjym1OSBuNjy0FdXXbDnVXa_!!1120470337-0-item_pic.jpg_430x430q90.jpg")
+	ret := addPro("【满400减40】ONLY夏季新款潮流百搭唐老鸭牛仔短裤女", "", "服装", 199, "https://img.alicdn.com/imgextra/i2/356060330/TB1.SsCrL5TBuNjSspmXXaDRVXa_!!0-item_pic.jpg_430x430q90.jpg")
+	ret = addPro("布先生短袖T 花纱透气 丝光纯棉圆领短袖男T恤夏季短袖体恤男士潮", "", "服装", 238, "https://img.alicdn.com/imgextra/i3/1130055117/TB1zhM.jIyYBuNkSnfoXXcWgVXa_!!0-item_pic.jpg_430x430q90.jpg")
+
+	
+	ret := addPro("https://gd1.alicdn.com/imgextra/i3/1127892448/TB2NREIkKGSBuNjSspbXXciipXa_!!1127892448.jpg", "回力女鞋平底运动鞋夏季透气轻便跑步鞋女黑色高中学生时尚帆布鞋", "女鞋", 55)
+	ret = addPro("https://img.alicdn.com/imgextra/i3/TB1B9TPMpXXXXbrXXXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg", "夏防滑软底老人凉鞋女鞋平跟平底老太太凉皮鞋中老年人妈妈鞋真皮", "女鞋", 138)
+	ret = addPro("https://img.alicdn.com/imgextra/i4/2260280385/TB1P.AliPihSKJjy0FeXXbJtpXa_!!0-item_pic.jpg_430x430q90.jpg", "烫社交女鞋时尚黑色羊猄真皮细中高跟鞋性感尖头职业单鞋女夏", "女鞋", 389)
+	ret = addPro("https://img.alicdn.com/imgextra/i3/2081311281/TB2CGszdHSYBuNjSspiXXXNzpXa_!!2081311281.jpg_430x430q90.jpg", "单鞋子2018新款春季中跟百搭皮鞋韩版女鞋一字扣尖头粗跟高跟鞋夏", "女鞋", 158)
+
+
+	ret := addPro(`https://img.alicdn.com/imgextra/i2/2451535811/TB241SYsH5YBuNjSspoXXbeNFXa_!!2451535811-0-item_pic.jpg_430x430q90.jpg`, `belecoo贝丽可高景观婴儿推车可坐躺折叠双向四轮避震宝宝手推车`, `婴儿`, 319)
+	ret = addPro(`https://img.alicdn.com/imgextra/i2/1894966562/TB2FgvUskOWBuNjSsppXXXPgpXa_!!1894966562-0-item_pic.jpg_430x430q90.jpg`, `夏季薄款新生婴儿衣服竹纤维0-3个月-1岁宝宝长袖哈衣连体衣`, `婴儿`, 25)
+	ret = addPro(`https://img.alicdn.com/imgextra/i4/TB15Sl4KXXXXXadXFXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg`, `儿童网眼袜夏季薄款春秋纯棉0-1-3-5-7-9岁婴儿袜新生儿宝宝袜子`, `婴儿`, 12)
+	ret = addPro(`https://img.alicdn.com/imgextra/i3/379833581/TB1V3xNsuuSBuNjy1XcXXcYjFXa_!!0-item_pic.jpg_430x430q90.jpg`, `gb好孩子婴儿手帕纯棉纱布面巾宝宝口水巾手绢儿童洗脸巾5条装`, `婴儿`, 49)
+
+
+	ret := addPro("https://img.alicdn.com/imgextra/i1/2139316517/TB1PJEerH1YBuNjSszeXXablFXa_!!0-item_pic.jpg_430x430q90.jpg", "MAYSU/美素精华瑰蜜露面部女保湿补水滋养精华液玫瑰精华露护肤品", "护肤品", 300)
+	ret = addPro("https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i3/441622457/TB2s2sKsKuSBuNjy1XcXXcYjFXa_!!441622457.jpg_430x430q90.jpg", "欧诗漫水活化妆品套装专柜女补水保湿乳液珍珠护肤品水乳官网正品", "护肤品", 259)
+	ret = addPro("https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i1/441622457/TB2slQssFuWBuNjSspnXXX1NVXa_!!441622457.jpg_430x430q90.jpg", "欧诗漫珍珠白护肤品套装女男补水保湿美白淡斑水乳学生化妆品正品", "护肤品", 170)
+	ret = addPro("https://img.alicdn.com/imgextra/i1/845001562/TB2FaygqrGYBuNjy0FoXXciBFXa_!!845001562-0-item_pic.jpg_430x430q90.jpg", "innisfree/悦诗风吟绿茶精萃平衡保湿水乳控油护肤面部套装 补水", "护肤品", 230)
+
+	
