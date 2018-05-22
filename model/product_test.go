@@ -11,10 +11,8 @@ import (
 )
 
 func Test_ProAdd(t *testing.T) {
-	ret := addPro("https://img.alicdn.com/imgextra/i3/TB1dTSafL6H8KJjy0Fjw8mXepXa_013809.jpg_430x430q90.jpg", "夏季减肥修正 左旋肉碱茶多酚片 0.8g/片*60片男女减肥", "保健品", 68)
-	ret = addPro("https://img.alicdn.com/imgextra/i2/TB1.UKKNpXXXXcnXFXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg", "CENTRUM/善存R佳维片 1.33g/片*150片+133.g/片*60片复合维生素", "保健品", 189)
-	ret = addPro("https://img.alicdn.com/imgextra/i4/2549841410/TB2pdGsr1uSBuNjSsplXXbe8pXa_!!2549841410-0-sm.jpg_430x430q90.jpg", "【直营】swisse女士复合维生素片120片 女士保健品", "保健品", 249)
-	ret = addPro("https://img.alicdn.com/imgextra/i7/TB1VAoVPVXXXXcjXFXXy74f.VXX_110843.jpg_430x430q90.jpg", "脑白金口服液10天剂量礼盒装改善深睡眠更年期保健品送礼", "保健品", 128)
+	ret := addPro("https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i2/2265724160/TB2gCQTXpyZBuNjt_jJXXbDlXXa_!!2265724160.jpg_430x430q90.jpg", "短袖t恤女夏装2018新款宽松韩范学生条纹半袖女装上衣服", "女装", 59)
+	ret = addPro("https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i2/2265724160/TB2wj4gr79WBuNjSspeXXaz5VXa_!!2265724160.jpg_430x430q90.jpg", "夏装短袖女2018新款白色t恤圆领宽松半袖纯棉体恤女装衣服", "女装", 59)
 	t.Log(ret)
 }
 func addPro(is interface{}, name, typ string, price int) string {
