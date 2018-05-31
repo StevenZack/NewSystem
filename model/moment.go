@@ -68,7 +68,7 @@ func MomentUpload(w http.ResponseWriter, r *http.Request) {
 		images = append(images, host+rpath)
 		fo.Close()
 	}
-	e = cm.Insert(Moment{Text: text, Address: address, Images: images, OpenId: openId, CreateTime: tools.GetTimeStrNow()})
+	e = cm.Insert(Moment{Text: text, Images: images, OpenId: openId, CreateTime: tools.GetTimeStrNow()})
 	if e != nil {
 		returnErr(w, e)
 		return
