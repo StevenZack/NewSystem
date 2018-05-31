@@ -72,3 +72,21 @@ func handleV(r *http.Request, key string) string {
 	}
 	return ""
 }
+func handleStr(r *http.Request, key string) string {
+	openId := handleV(r, key)
+	if openId == "" {
+		if r.MultipartForm.Value != nil {
+			fmt.Println("multi != nil")
+			if v, ok := r.MultipartForm.Value[key]; ok {
+				if len(v) > 0 {
+					fmt.Println("len(v) > 0")
+					openId = v[0]
+				}
+			}
+		} else {
+			fmt.Println("r.FormValue")
+			openId = r.FormValue("openId")
+		}
+	}
+	return openId
+}

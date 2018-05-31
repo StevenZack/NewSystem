@@ -25,21 +25,7 @@ func MomentUpload(w http.ResponseWriter, r *http.Request) {
 	r.ParseMultipartForm(32 << 20)
 	// text := r.FormValue("text")
 	// address := r.FormValue("address")
-	openId := handleV(r, "openId")
-	if openId == "" {
-		if r.MultipartForm.Value != nil {
-			fmt.Println("multi != nil")
-			if v, ok := r.MultipartForm.Value["openId"]; ok {
-				if len(v) > 0 {
-					fmt.Println("len(v) > 0")
-					openId = v[0]
-				}
-			}
-		} else {
-			fmt.Println("r.FormValue")
-			openId = r.FormValue("openId")
-		}
-	}
+	openId := handleStr(r, "openId")
 	s, e := mgo.Dial(mongoDB)
 	if e != nil {
 		returnErr(w, e)
@@ -57,8 +43,7 @@ func MomentUpload(w http.ResponseWriter, r *http.Request) {
 		returnErr(w, "用户不存在，请先注册")
 		return
 	}
-	text := handleV(r, "text")
-	address := handleV(r, "address")
+	text := handleStr(r, "text")
 	var images []string
 	fis := r.MultipartForm.File["images"]
 	for _, v := range fis {
