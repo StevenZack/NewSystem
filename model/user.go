@@ -39,6 +39,7 @@ func UserLogin(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		returnData(w, Base{Status: "OK"})
+		return
 	}
 	//register
 	gu.OpenId = openId
